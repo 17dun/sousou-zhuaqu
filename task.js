@@ -6,6 +6,7 @@ var url = system.args[1];
 
 var page = webpage.create();
 
+console.log(url);
 page.open(url, function(status){
     if(status !== 'success' && status !=='fail'){
         phantom.exit();
@@ -15,8 +16,9 @@ page.open(url, function(status){
                 var evalResult = page.evaluate(function(){
                     var rt = [];
                     var $foods = mobijs('.food-list .item');
+                    console.log($foods.length);
                     for(var i=0;i<$foods.length;i++){
-                        var $food = $($foods[i]);
+                        var $food = mobijs($foods[i]);
                         var link = $food.find('.img-box a').attr('href');
                         var img = $food.find('.img-box img').attr('src');
                         var name = $food.find('.text-box a').html();
@@ -33,6 +35,6 @@ page.open(url, function(status){
                 console.log(JSON.stringify(evalResult));
             }
             phantom.exit();
-        },1000);
+        },3000);
     }
 })

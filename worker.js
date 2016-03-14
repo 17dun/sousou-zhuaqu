@@ -13,14 +13,14 @@ var spawn = require('child_process').spawn;
     var run = function(option){
         var baseurl = 'http://www.boohee.com/food/group/'
         var urls = [];
-        for(var i=0;i<11;i++){
+        for(var i=1;i<11;i++){
             for(var j=0;j<11;j++){
                 var url = baseurl+i+'?page='+j;
                 urls.push(url);
             }
         }
 
-        for(var i=0; i<10; i++){
+        for(var i=0; i<5; i++){
             startNew();
         }
         function startNew(){
